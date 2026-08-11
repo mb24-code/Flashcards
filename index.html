@@ -2,35 +2,78 @@
 <html>
 <head>
     <style>
-body {
-    margin: 0;
-    padding: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    box-sizing: border-box;
-}
+        * {
+            box-sizing: border-box;
+        }
 
-.card {
-    width: 90%;          /* Fills 90% of the iframe width */
-    max-width: 650px;    /* Caps maximum size on large screens */
-    height: 320px;       /* Sets card height */
-    font-size: 1.25rem;  /* Scales text up for readability */
-    perspective: 1000px;
-    cursor: pointer;
-}
-        .card-inner { width: 100%; height: 100%; position: relative; transform-style: preserve-3d; transition: transform 0.6s; }
-        .card.flipped .card-inner { transform: rotateY(180deg); }
-        .front, .back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; display: flex; justify-content: center; align-items: center; padding: 20px; box-sizing: border-box; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); background: white; text-align: center; }
-        .back { transform: rotateY(180deg); background: #002d62; color: white; }
+        body {
+            margin: 0;
+            padding: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        .card {
+            width: 100%;            /* Fills full width of iframe */
+            max-width: 850px;       /* Expanded maximum card width */
+            height: 400px;          /* Increased vertical height */
+            perspective: 1000px;
+            cursor: pointer;
+        }
+
+        .card-inner { 
+            width: 100%; 
+            height: 100%; 
+            position: relative; 
+            transform-style: preserve-3d; 
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); 
+        }
+
+        .card.flipped .card-inner { 
+            transform: rotateY(180deg); 
+        }
+
+        .front, .back { 
+            position: absolute; 
+            width: 100%; 
+            height: 100%; 
+            backface-visibility: hidden; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            padding: 35px; 
+            border-radius: 16px; 
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); 
+            text-align: center; 
+            
+            /* Text sizing directly on card faces */
+            font-size: 2rem;        /* Large text size (~32px) */
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        .front {
+            background-color: #ffffff;
+            color: #111827;
+            border: 2px solid #e5e7eb;
+        }
+
+        .back { 
+            transform: rotateY(180deg); 
+            background-color: #002d62; 
+            color: #ffffff; 
+        }
     </style>
 </head>
 <body>
 
 <div class="card" onclick="this.classList.toggle('flipped')">
     <div class="card-inner">
-        <div class="front"><strong>Where is Special Collections?</strong></div>
+        <div class="front">Where is Special Collections?</div>
         <div class="back">Sawyer Library, Level 4 (Chapin Library)</div>
     </div>
 </div>
